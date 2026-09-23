@@ -1,0 +1,21 @@
+[package]
+name = "disk-top-tree-walk"
+version = "0.0.1"
+edition.workspace = true
+publish.workspace = true
+description = "Bounded disk-top walk: one total-of-root reading per enumerable root, plus btrfs subvolume totals for excluded hot trees. The `scala-tools disk --top` wedge closes here — no recursive descent into any tree, by construction."
+
+[dependencies]
+anyhow = { workspace = true }
+host-spawn = { workspace = true }
+scala-os = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tempdir = { workspace = true }
+tokio = { workspace = true }
+
+[package.metadata.teamscala]
+capability = "Bounded disk-top walk primitive: total-of-root readings for enumerable roots, plus btrfs subvolume totals for excluded hot trees. Replaces recursive descent in `scala-tools disk --top` (the 2026-09-23 wedge)."
+tier = "utilities"

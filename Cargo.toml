@@ -1,0 +1,36 @@
+# @status generated
+# @generator cargo-workspace-pins@1.0.0
+# Dependency versions here are PROJECTED from published registry state, and the
+# members table is DERIVED from where the member manifests sit.
+# Do not hand-edit: the next codegen run reverts it, and guard_rule/
+# cargo-teamscala-declaration-is-derived refuses the write at the tool boundary.
+# rust-utilities-disk-top-tree-walk — disk-top-tree-walk in its own repository
+# (one-publishable-artifact-one-repository, operator ruling 2026-09-13).
+# New crate, sibling of rust-utilities-command-consumer per operator ruling
+# 2026-09-23 — closes the wedge defect in `scala-tools disk --top` by replacing
+# one recursive descent with bounded per-root totals and btrfs subvolume totals
+# for excluded hot trees.
+#
+# Cross-repo dependencies resolve from the private Cargo registry (Kellnr) by
+# version — never a workspace path across repos. First-party pins added by
+# `scala-tools codegen run --output cargo-pins-rust-utilities-disk-top-tree-walk`
+# after the source imports them.
+[workspace]
+resolver = "2"
+members = [
+  "crates/utilities/disk-top-tree-walk",
+]
+
+[workspace.package]
+edition = "2021"
+publish = ["teamscala"]
+
+[workspace.dependencies]
+# first-party, other repos (kellnr latest at 2026-09-23)
+host-spawn = { version = "0.1.28", registry = "teamscala" }
+scala-os = { version = "0.1.58", registry = "teamscala" }
+# shared external
+anyhow = "1"
+tempdir = "0.3"
+tokio = { version = "1", features = ["io-util", "macros", "rt-multi-thread"] }
+tracing = "0.1"
